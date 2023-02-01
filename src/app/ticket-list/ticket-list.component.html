@@ -1,0 +1,24 @@
+<ng-container *ngIf="tickets.length > 0">
+  <div class="container mx-auto">
+    <div *ngFor="let item of tickets" class="shadow-xl p-3">
+      <p>Title : {{ item.title }}</p>
+      <p>{{ item.content }}</p>
+      <a
+        class="bg-stone-900 text-stone-100 p-3 mr-2 rounded"
+        [routerLink]="['/edit', item._id]"
+        >Edit</a
+      >
+      <button
+        class="bg-red-700 text-stone-100 p-3 mr-2 rounded"
+        (click)="onDelete(item._id)"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="tickets.length <= 0">
+  <div class="container mx-auto">
+    <p class="mt-2">No tickets created</p>
+  </div>
+</ng-container>

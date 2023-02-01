@@ -1,0 +1,35 @@
+<div class="bg-black h-[65px] flex items-center">
+  <div class="container mx-auto flex justify-between">
+    <a class="text-stone-100 font-bold text-2xl" routerLink="">MTS</a>
+    <div>
+      <a routerLink="" class="text-stone-100 mr-3">Home</a>
+      <a
+        *ngIf="userIsAuthenticated"
+        routerLink="create"
+        class="text-stone-100 mr-3"
+        >Create Ticket</a
+      >
+      <a
+        *ngIf="userIsAuthenticated"
+        routerLink="tickets"
+        class="text-stone-100 mr-3"
+        >View Tickets</a
+      >
+      <a
+        *ngIf="!userIsAuthenticated"
+        routerLink="signup"
+        class="text-stone-100 mr-3"
+        >Signup</a
+      >
+      <a
+        *ngIf="!userIsAuthenticated"
+        routerLink="login"
+        class="text-stone-100 mr-3"
+        >Login</a
+      >
+      <button (click)="onLogout()" *ngIf="userIsAuthenticated" class="text-stone-100 mr-3" >
+        Logout
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<!-- Create Ticket -->
+<div class="container mx-auto">
+  <form [formGroup]="form" class="w-[310px]" (submit)="onAddTicket()">
+    <!-- title error -->
+    <p
+      *ngIf="form.get('title').invalid && form.get('title').touched"
+      class="text-red-600 text-sm mb-1"
+    >
+      Enter Valid Title
+    </p>
+    <!-- title input -->
+    <input
+      type="text"
+      class="border-2 border-purple-600 outline-0 rounded p-3 block w-full mb-2"
+      placeholder="Title"
+      name="title"
+      formControlName="title"
+      [ngClass]="{
+        'border-red-600': form.get('title').invalid && form.get('title').touched
+      }"
+    />
+
+    <!-- Content error -->
+    <p
+      *ngIf="form.get('content').invalid && form.get('content').touched"
+      class="text-red-600 text-sm mb-1"
+    >
+      Enter Valid Content
+    </p>
+    <!-- Content Input -->
+    <textarea
+      type="text"
+      class="border-2 border-purple-600 outline-0 rounded p-3 block w-full mb-2"
+      placeholder="Content"
+      name="content"
+      formControlName="content"
+      [ngClass]="{
+        'border-red-600':
+          form.get('content').invalid && form.get('content').touched
+      }"
+    ></textarea>
+    <!-- button -->
+    <button type="submit" class="bg-stone-900 text-stone-100 p-3 rounded">
+      Save
+    </button>
+  </form>
+</div>
