@@ -1,6 +1,8 @@
 <!-- Create Ticket -->
-<div class="container mx-auto">
+<div class="container flex justify-center mt-10">
   <form [formGroup]="form" class="w-[310px]" (submit)="onAddTicket()">
+    <!-- Heading -->
+    <h2 class="font-display text-3xl">Create Ticket</h2>
     <!-- title error -->
     <p
       *ngIf="form.get('title').invalid && form.get('title').touched"
@@ -11,7 +13,7 @@
     <!-- title input -->
     <input
       type="text"
-      class="border-2 border-purple-600 outline-0 rounded p-3 block w-full mb-2"
+      class="border-2 border-purple-600 bg-transparent outline-0 rounded p-3 block w-full mb-2"
       placeholder="Title"
       name="title"
       formControlName="title"
@@ -30,7 +32,7 @@
     <!-- Content Input -->
     <textarea
       type="text"
-      class="border-2 border-purple-600 outline-0 rounded p-3 block w-full mb-2"
+      class="border-2 border-purple-600 bg-transparent outline-0 rounded p-3 block w-full mb-2"
       placeholder="Content"
       name="content"
       formControlName="content"
@@ -39,6 +41,16 @@
           form.get('content').invalid && form.get('content').touched
       }"
     ></textarea>
+    <!-- notification checkbox -->
+    <div class="flex items-center mb-2">
+      <input
+        type="checkbox"
+        name="getNotified"
+        formControlName="getNotified"
+        class="w-4 h-4 mr-2 accent-violet-500"
+      />
+      <span>Get Notified</span>
+    </div>
     <!-- button -->
     <button type="submit" class="bg-stone-900 text-stone-100 p-3 rounded">
       Save

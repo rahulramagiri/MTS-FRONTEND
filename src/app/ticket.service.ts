@@ -30,13 +30,16 @@ export class TicketService {
   }
 
   getTicket(id: string) {
-    return this.http.get<{ _id: string; title: string; content: string }>(
-      this.backendUrl + id
-    );
+    return this.http.get<TicketModel>(this.backendUrl + id);
   }
 
-  addTicket(title: string, content: string) {
-    const ticket: TicketModel = { _id: '', title: title, content: content };
+  addTicket(title: string, content: string, getNotified: boolean) {
+    const ticket: TicketModel = {
+      _id: '',
+      title: title,
+      content: content,
+      getNotified: getNotified,
+    };
     this.http
       .post<{ message: string; ticketId: string }>(this.backendUrl, ticket)
       .subscribe((data) => {
@@ -47,9 +50,19 @@ export class TicketService {
         this.router.navigate(['/tickets']);
       });
   }
-  
-  updateTicket(id: string, title: string, content: string) {
-    const ticket: TicketModel = { _id: id, title: title, content: content };
+
+  updateTicket(
+    id: string,
+    title: string,
+    content: string,
+    getNotified: boolean
+  ) {
+    const ticket: TicketModel = {
+      _id: id,
+      title: title,
+      content: content,
+      getNotified: getNotified,
+    };
     this.http.put(this.backendUrl + id, ticket).subscribe((data) => {
       const updatedTicket = [...this.tickets];
       const oldTIcketIndex = updatedTicket.findIndex(

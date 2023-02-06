@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'client';
+  title = 'Mind Techno Systems';
   constructor(private authS: AuthService) {}
   ngOnInit() {
     this.authS.autoAuthUser();

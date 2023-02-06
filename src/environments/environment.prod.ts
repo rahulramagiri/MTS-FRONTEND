@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://mts-env.eba-pgtxjr7t.us-east-1.elasticbeanstalk.com/',
+  apiUrl: 'http://mtsv1-env.eba-4upp2vbk.us-east-1.elasticbeanstalk.com/',
 };

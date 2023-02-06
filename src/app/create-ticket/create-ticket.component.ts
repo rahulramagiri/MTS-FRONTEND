@@ -24,6 +24,7 @@ export class CreateTicketComponent implements OnInit {
       content: new FormControl('', {
         validators: [Validators.required, Validators.minLength(3)],
       }),
+      getNotified: new FormControl(true, {}),
     });
     this.route.paramMap.subscribe((param: ParamMap) => {
       //  tickedId is the identifier we defined in routing
@@ -35,10 +36,12 @@ export class CreateTicketComponent implements OnInit {
             _id: data._id,
             title: data.title,
             content: data.content,
+            getNotified: data.getNotified,
           };
           this.form.setValue({
             title: this.ticket.title,
             content: this.ticket.content,
+            getNotified: this.ticket.getNotified,
           });
         });
       } else {
@@ -51,13 +54,19 @@ export class CreateTicketComponent implements OnInit {
   onAddTicket() {
     if (this.form.invalid) return;
     if (this.mode === 'create')
-      this.tService.addTicket(this.form.value.title, this.form.value.content);
+      this.tService.addTicket(
+        this.form.value.title,
+        this.form.value.content,
+        this.form.value.getNotified
+      );
     else
       this.tService.updateTicket(
         this.ticketId,
         this.form.value.title,
-        this.form.value.content
+        this.form.value.content,
+        this.form.value.getNotified
       );
+    console.log(this.form.value);
     this.form.reset();
   }
 }

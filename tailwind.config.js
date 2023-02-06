@@ -2,6 +2,10 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
+    fontFamily: {
+      sans: ["Rubik", "Barlow Condensed"],
+      display: ["Forum", "Barlow Condensed"],
+    },
     extend: {},
   },
   plugins: [],

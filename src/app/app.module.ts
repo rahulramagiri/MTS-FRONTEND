@@ -15,6 +15,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth-interceptor';
 import { AdminComponent } from './admin/admin.component';
 import { SingupComponent } from './singup/singup.component';
+import { NewNavComponent } from './new-nav/new-nav.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SingupComponent } from './singup/singup.component';
     NavbarComponent,
     HomeComponent,
     AdminComponent,
+    NewNavComponent,
   ],
   imports: [
     BrowserModule,
