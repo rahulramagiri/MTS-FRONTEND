@@ -121,7 +121,7 @@
           <button
             (click)="onSideNavToggle()"
             class="mr-3"
-            [class.hidden]="!isSideNavHidden"
+            *ngIf="userIsAuthenticated"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -130,6 +130,7 @@
               stroke-width="1.5"
               stroke="currentColor"
               class="w-6 h-6 text-zinc-100"
+              [class.hidden]="!isSideNavHidden"
             >
               <path
                 stroke-linecap="round"
@@ -140,7 +141,12 @@
           </button>
           <a
             class="text-zinc-100 font-bold text-2xl"
-            [class.hidden]="!isSideNavHidden"
+            *ngIf="!userIsAuthenticated"
+            >MTS</a
+          >
+          <a
+            class="text-zinc-100 font-bold text-2xl"
+            *ngIf="userIsAuthenticated && isSideNavHidden"
             >MTS</a
           >
         </div>
@@ -161,26 +167,26 @@
           </svg>
         </button>
         <ul
-          class="sm:flex sm:block w-full m-4 sm:m-0 sm:w-auto tran"
           [class.hidden]="isNavHidden"
+          class="sm:flex sm:block w-full m-4 sm:m-0 sm:w-auto tran"
         >
           <li class="text-zinc-300 hover:text-zinc-100 px-2 py-4 sm:py-0">
-            <a routerLink="">Home</a>
+            <a routerLink="" (click)="closeNav()">Home</a>
           </li>
           <li class="text-zinc-300 hover:text-zinc-100 px-2 py-4 sm:py-0">
-            <a routerLink="">Contact</a>
+            <a routerLink="" (click)="closeNav()">Contact</a>
           </li>
           <li
             *ngIf="!userIsAuthenticated"
             class="text-zinc-300 hover:text-zinc-100 px-2 py-4 sm:py-0"
           >
-            <a routerLink="signup">Signup</a>
+            <a routerLink="signup" (click)="closeNav()">Signup</a>
           </li>
           <li
             *ngIf="!userIsAuthenticated"
             class="text-zinc-300 hover:text-zinc-100 px-2 py-4 sm:py-0"
           >
-            <a routerLink="login">Login</a>
+            <a routerLink="login" (click)="closeNav()">Login</a>
           </li>
           <li
             *ngIf="userIsAuthenticated"

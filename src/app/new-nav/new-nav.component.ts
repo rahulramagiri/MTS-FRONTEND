@@ -28,11 +28,16 @@ export class NewNavComponent implements OnInit, OnDestroy {
     this.isNavHidden = !this.isNavHidden;
     this.isSideNavHidden = true;
   };
+  closeNav() {
+    this.isNavHidden = true;
+  }
+
   onLogout() {
     this.authS.logout();
   }
 
   ngOnDestroy(): void {
     this.authStatusSub.unsubscribe();
+    this.isSideNavHidden = false;
   }
 }

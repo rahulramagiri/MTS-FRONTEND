@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'tickets', component: TicketListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SingupComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin/mts', component: AdminComponent },
 ];
 
 @NgModule({

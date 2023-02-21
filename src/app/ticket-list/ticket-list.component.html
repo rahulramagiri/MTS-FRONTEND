@@ -3,6 +3,24 @@
     <div *ngFor="let item of tickets" class="shadow-xl p-3">
       <p>Title : {{ item.title }}</p>
       <p>{{ item.content }}</p>
+      <p
+        class="border-2 inline-block py-1 px-2 text-xs rounded-full"
+        [ngClass]="{
+          'text-green-500 border-green-500': item.priority === 'Suess',
+          'text-amber-500 border-amber-500': item.priority === 'Moderate'
+        }"
+      >
+        {{ item.priority }}
+      </p>
+      <p
+        class="border-2 inline-block py-1 px-2 text-xs rounded-full"
+        [ngClass]="{
+          'text-green-500 border-green-500': item.status === 'Success',
+          'text-amber-500 border-amber-500': item.status === 'Pending'
+        }"
+      >
+        {{ item.status }}
+      </p>
       <a
         class="bg-stone-900 text-stone-100 p-3 mr-2 rounded"
         [routerLink]="['/edit', item._id]"
